@@ -8,7 +8,9 @@ function App() {
 
     return (
         <div className="App">
-            {state.value}
+            <span data-testid="screenValue">
+                {state.matches("off") ? "" : state.matches("loginScreen") ? "awaiting login" : state.matches("desktop") ? "welcome" : ""}
+            </span>
             <button onClick={() => send("POWER_BUTTON_PUSHED")}>power</button>
             {state.matches("loginScreen") ? <button onClick={() => send("LOGIN")}>login</button> : ""}
             {state.matches("desktop") ? <button onClick={() => send("LOGOUT")}>logout</button> : ""}
